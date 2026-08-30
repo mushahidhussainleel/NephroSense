@@ -1,0 +1,55 @@
+version: "3.9"
+
+# =============================================
+# NephroSense — Docker Compose
+# Backend (FastAPI) + Frontend (Nginx)
+# =============================================
+
+services:
+
+  # ==========================================
+  # BACKEND — FastAPI + ML Models
+  # ==========================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nephrosense-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/models:/app/models
+      - ./backend/assets:/app/assets
+    env_file:
+      - .env
+    networks:
+      - nephrosense-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==========================================
+  # FRONTEND — Nginx Static Server
+  # ==========================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: nephrosense-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - nephrosense-network
+    restart: unless-stopped
+
+# =============================================
+# NETWORK
+# =============================================
+networks:
+  nephrosense-network:
+    driver: bridge

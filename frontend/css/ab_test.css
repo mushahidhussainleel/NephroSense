@@ -1,0 +1,404 @@
+/* =============================================
+   NEPHROSENSE — A/B Testing Page Styles
+   ============================================= */
+
+.ab-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* HEADER */
+.ab-header {
+    text-align: center;
+}
+
+.ab-badge {
+    display: inline-block;
+    background: rgba(159, 122, 234, 0.1);
+    border: 1px solid rgba(159, 122, 234, 0.2);
+    color: var(--accent-purple);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.ab-header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.ab-header p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* EXPLAINER */
+.ab-explainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px 40px;
+}
+
+.explainer-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.explainer-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(99, 179, 237, 0.1);
+    border: 1px solid rgba(99, 179, 237, 0.2);
+    color: var(--accent-blue);
+    font-size: 13px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.explainer-icon.challenger {
+    background: rgba(159, 122, 234, 0.1);
+    border-color: rgba(159, 122, 234, 0.2);
+    color: var(--accent-purple);
+}
+
+.explainer-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.explainer-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.explainer-vs {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-muted);
+    padding: 0 8px;
+}
+
+/* MAIN LAYOUT */
+.ab-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* FORM SECTION */
+.ab-form-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 20px;
+}
+
+.ab-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.unit {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.form-group input,
+.form-group select {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-family: var(--font-main);
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.08);
+}
+
+.form-group input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-group select option {
+    background: var(--bg-secondary);
+}
+
+/* AB TEST BUTTON */
+.btn-ab-test {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-ab-test:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(99, 179, 237, 0.3);
+}
+
+.btn-ab-test:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* RESULTS SECTION */
+.ab-results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* AGREEMENT BANNER */
+.agreement-banner {
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.agreement-banner.agree {
+    background: rgba(104, 211, 145, 0.08);
+    border: 1px solid rgba(104, 211, 145, 0.2);
+}
+
+.agreement-banner.disagree {
+    background: rgba(252, 129, 129, 0.08);
+    border: 1px solid rgba(252, 129, 129, 0.2);
+}
+
+.agreement-icon {
+    font-size: 24px;
+}
+
+.agreement-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.agreement-banner.agree .agreement-text {
+    color: var(--accent-green);
+}
+
+.agreement-banner.disagree .agreement-text {
+    color: var(--accent-red);
+}
+
+/* COMPARISON CARDS */
+.comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.model-result-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.3s;
+}
+
+.model-result-card.winner {
+    border-color: rgba(104, 211, 145, 0.4);
+}
+
+.model-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.model-tag.champion {
+    background: rgba(99, 179, 237, 0.1);
+    color: var(--accent-blue);
+    border: 1px solid rgba(99, 179, 237, 0.2);
+}
+
+.model-tag.challenger {
+    background: rgba(159, 122, 234, 0.1);
+    color: var(--accent-purple);
+    border: 1px solid rgba(159, 122, 234, 0.2);
+}
+
+.model-version {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.model-stage {
+    font-size: 48px;
+    font-weight: 800;
+    font-family: var(--font-mono);
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+}
+
+.model-stage-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.model-confidence {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.conf-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.conf-value {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--accent-green);
+}
+
+.conf-bar-wrap {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.conf-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.8s ease;
+    width: 0%;
+}
+
+.champion-bar {
+    background: linear-gradient(90deg, var(--accent-blue), #4299e1);
+}
+
+.challenger-bar {
+    background: linear-gradient(90deg, var(--accent-purple), #805ad5);
+}
+
+/* WINNER */
+.winner-section {
+    background: rgba(104, 211, 145, 0.05);
+    border: 1px solid rgba(104, 211, 145, 0.15);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    text-align: center;
+}
+
+.winner-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.winner-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-green);
+}
+
+/* RESET BUTTON */
+.btn-reset {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-reset:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}

@@ -1,0 +1,80 @@
+# =============================================
+# NephroSense — .gitignore
+# =============================================
+
+# ==========================================
+# SECRETS — Never push sensitive files
+# ==========================================
+.env
+*.key
+*.secret
+
+# ==========================================
+# PATIENT DATA — Protect private patient data
+# ==========================================
+backend/data/raw/
+backend/data/processed/
+data/
+
+# ==========================================
+# ML MODELS — Ignore large model files
+# ==========================================
+backend/models/*.pkl
+backend/models/encoders/*.pkl
+
+# ==========================================
+# MLFLOW — Ignore local tracking files
+# ==========================================
+backend/notebooks/mlruns/
+backend/notebooks/mlflow.db
+mlruns/
+mlflow.db
+
+# ==========================================
+# PYTHON CACHE — Ignore temporary Python files
+# ==========================================
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# ==========================================
+# VIRTUAL ENVIRONMENTS — Do not push environments
+# ==========================================
+venv/
+env/
+.venv/
+ai_env/
+
+# ==========================================
+# JUPYTER NOTEBOOKS — Ignore temporary notebook files
+# ==========================================
+.ipynb_checkpoints/
+
+# ==========================================
+# OS FILES — Ignore operating system files
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# DOCKER — Ignore Docker temporary files
+# ==========================================
+.docker/
+
+# ==========================================
+# VS CODE — Ignore personal editor settings
+# ==========================================
+.vscode/settings.json
+.vscode/launch.json
+.vscode/
+
+# ==========================================
+# LOGS — Ignore application log files
+# ==========================================
+*.log
+logs/

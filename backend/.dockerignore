@@ -1,0 +1,38 @@
+# NephroSense Backend — .dockerignore
+
+# Data — Patient privacy
+data/
+
+# Notebooks — Not needed in container
+notebooks/
+
+# MLflow — Local only
+mlruns/
+mlflow.db
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+env/
+.venv/
+ai_env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Logs
+*.log

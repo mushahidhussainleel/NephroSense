@@ -1,0 +1,183 @@
+/* =============================================
+   NEPHROSENSE — Common Styles
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* RESET */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* TOKENS */
+:root {
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #111827;
+    --bg-card: #1a2235;
+    --bg-input: #0f1929;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-focus: rgba(99, 179, 237, 0.5);
+
+    --accent-blue: #63b3ed;
+    --accent-purple: #9f7aea;
+    --accent-green: #68d391;
+    --accent-red: #fc8181;
+    --accent-yellow: #f6e05e;
+
+    --text-primary: #f0f4f8;
+    --text-secondary: #8a9bb5;
+    --text-muted: #4a5568;
+
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(10, 15, 26, 0.95);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+}
+
+.brand-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(104, 211, 145, 0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(104, 211, 145, 0); }
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-primary);
+    background: var(--bg-card);
+}
+
+/* =============================================
+   ACCENT
+   ============================================= */
+.accent {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* =============================================
+   BUTTONS — Common
+   ============================================= */
+.btn-back,
+.btn-next,
+.btn-predict {
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-back {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.btn-back:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.btn-next {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: white;
+    margin-left: auto;
+}
+
+.btn-next:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(99, 179, 237, 0.3);
+}
+
+.btn-predict {
+    background: linear-gradient(135deg, #38a169, #2f855a);
+    color: white;
+    margin-left: auto;
+}
+
+.btn-predict:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(56, 161, 105, 0.3);
+}
+
+/* =============================================
+   SCROLLBAR
+   ============================================= */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-card);
+    border-radius: 3px;
+}

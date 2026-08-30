@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NephroSense — Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-dot"></span>
+            NephroSense
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Predict</a>
+            <a href="ab_test.html">A/B Testing</a>
+            <a href="admin.html" class="active">Admin</a>
+            <a href="http://127.0.0.1:8000/docs" target="_blank">API Docs</a>
+        </div>
+    </nav>
+
+    <!-- ADMIN MAIN -->
+    <main class="admin-container">
+
+        <div class="admin-header">
+            <h1>Admin <span class="accent">Panel</span></h1>
+            <p>Model governance and monitoring dashboard</p>
+        </div>
+
+        <!-- API KEY INPUT -->
+        <div class="api-key-section">
+            <div class="form-group">
+                <label>Admin API Key</label>
+                <div class="key-input-row">
+                    <input type="password" id="admin-key" placeholder="Enter admin API key">
+                    <button class="btn-verify" onclick="loadAdminData()">Verify & Load</button>
+                </div>
+            </div>
+            <div id="key-status"></div>
+        </div>
+
+        <!-- ADMIN CONTENT -->
+        <div class="admin-content" id="admin-content" style="display:none">
+
+            <!-- METRICS ROW -->
+            <div class="metrics-row">
+                <div class="metric-card">
+                    <div class="metric-label">Active Model</div>
+                    <div class="metric-value" id="active-model">--</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Total Requests</div>
+                    <div class="metric-value" id="total-requests">--</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Model Status</div>
+                    <div class="metric-value" id="model-status">--</div>
+                </div>
+            </div>
+
+            <!-- VERSIONS TABLE -->
+            <div class="admin-card">
+                <div class="card-title">Model Registry</div>
+                <table class="admin-table" id="versions-table">
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>Model</th>
+                            <th>Accuracy</th>
+                            <th>F1 Score</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="versions-tbody">
+                        <tr><td colspan="5" style="text-align:center; color: var(--text-muted)">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="actions-row">
+
+                <!-- SWITCH VERSION -->
+                <div class="admin-card">
+                    <div class="card-title">Switch Model Version</div>
+                    <p class="action-desc">Change the active production model.</p>
+                    <div class="action-row">
+                        <select id="switch-select">
+                            <option value="v2">V2 — XGBoost (Champion)</option>
+                            <option value="v3">V3 — XGBoost Tuned (Challenger)</option>
+                        </select>
+                        <button class="btn-action btn-switch" onclick="doSwitch()">Switch</button>
+                    </div>
+                    <div id="switch-result" class="action-result"></div>
+                </div>
+
+                <!-- ROLLBACK -->
+                <div class="admin-card">
+                    <div class="card-title">Manual Rollback</div>
+                    <p class="action-desc">Rollback to the previous stable version.</p>
+                    <div class="action-row">
+                        <button class="btn-action btn-rollback" onclick="doRollback()">
+                            Rollback Now
+                        </button>
+                    </div>
+                    <div id="rollback-result" class="action-result"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

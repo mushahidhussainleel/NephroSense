@@ -1,0 +1,12 @@
+# =============================================
+# NephroSense Frontend — Dependencies
+# =============================================
+# Pure HTML/CSS/JavaScript frontend
+# No npm or node packages required
+#
+# External CDN resources used in browser:
+# - Google Fonts (Inter, JetBrains Mono)
+#   https://fonts.googleapis.com
+#
+# Served via: Nginx (Docker)
+# =============================================

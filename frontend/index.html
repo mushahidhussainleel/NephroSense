@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NephroSense — CKD Prediction</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-dot"></span>
+            NephroSense
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Predict</a>
+            <a href="ab_test.html">A/B Testing</a>
+            <a href="admin.html">Admin</a>
+            <a href="http://127.0.0.1:8000/docs" target="_blank">API Docs</a>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main-container">
+
+        <!-- LEFT PANEL -->
+        <div class="left-panel">
+            <div class="panel-header">
+                <h1>CKD Stage <span class="accent">Prediction</span></h1>
+                <p>Enter patient clinical data to predict Chronic Kidney Disease stage with AI-powered explainability.</p>
+            </div>
+
+            <!-- STEP INDICATORS -->
+            <div class="step-indicators">
+                <div class="step-item active" id="ind-1">
+                    <div class="step-circle">1</div>
+                    <span>Lab Results</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item" id="ind-2">
+                    <div class="step-circle">2</div>
+                    <span>Lifestyle</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item" id="ind-3">
+                    <div class="step-circle">3</div>
+                    <span>Diet & Habits</span>
+                </div>
+            </div>
+
+            <!-- INFO CARDS -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-number">26</div>
+                    <div class="info-label">Clinical Features</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-number">98.6%</div>
+                    <div class="info-label">Model Accuracy</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-number">6</div>
+                    <div class="info-label">CKD Stages</div>
+                </div>
+            </div>
+
+            <div class="disclaimer-box">
+                <span class="disclaimer-icon">⚕</span>
+                This tool is for clinical decision support only. Always consult a qualified nephrologist for diagnosis.
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL — FORM -->
+        <div class="right-panel">
+
+            <!-- PROGRESS BAR -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="step-label" id="step-label">Step 1 of 3 — Lab Results</div>
+
+            <form id="prediction-form">
+
+                <!-- ==================== STEP 1 — LAB RESULTS ==================== -->
+                <div class="form-step active" id="step-1">
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>GFR <span class="unit">(mL/min/1.73m²)</span></label>
+                            <input type="number" name="gfr" placeholder="e.g. 75.6" step="0.01" required>
+                            <span class="field-hint">Normal: 90+</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Serum Creatinine <span class="unit">(mg/dL)</span></label>
+                            <input type="number" name="serum_creatinine" placeholder="e.g. 0.9" step="0.01" required>
+                            <span class="field-hint">Normal: 0.6–1.2</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>BUN <span class="unit">(mg/dL)</span></label>
+                            <input type="number" name="bun" placeholder="e.g. 15" step="0.1" required>
+                            <span class="field-hint">Normal: 7–20</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Serum Calcium <span class="unit">(mg/dL)</span></label>
+                            <input type="number" name="serum_calcium" placeholder="e.g. 9.5" step="0.01" required>
+                            <span class="field-hint">Normal: 8.5–10.5</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Blood Pressure <span class="unit">(mmHg)</span></label>
+                            <input type="number" name="blood_pressure" placeholder="e.g. 120" step="0.1" required>
+                            <span class="field-hint">Normal: &lt;120</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Urine pH</label>
+                            <input type="number" name="urine_ph" placeholder="e.g. 6.5" step="0.1" required>
+                            <span class="field-hint">Normal: 4.5–8.0</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>C3/C4 Levels</label>
+                            <input type="number" name="c3_c4" placeholder="e.g. 110" step="0.01" required>
+                            <span class="field-hint">Complement levels</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Oxalate Levels</label>
+                            <input type="number" name="oxalate_levels" placeholder="e.g. 2.3" step="0.01" required>
+                            <span class="field-hint">Urinary oxalate</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>ANA Test</label>
+                            <select name="ana" required>
+                                <option value="">Select result</option>
+                                <option value="positive">Positive</option>
+                                <option value="negative">Negative</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Hematuria</label>
+                            <select name="hematuria" required>
+                                <option value="">Select result</option>
+                                <option value="positive">Positive</option>
+                                <option value="negative">Negative</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ==================== STEP 2 — LIFESTYLE ==================== -->
+                <div class="form-step" id="step-2">
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Physical Activity</label>
+                            <select name="physical_activity" required>
+                                <option value="">Select frequency</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="rarely">Rarely</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Water Intake <span class="unit">(Liters/day)</span></label>
+                            <input type="number" name="water_intake" placeholder="e.g. 2.5" step="0.1" required>
+                            <span class="field-hint">Recommended: 2–3L</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Smoking</label>
+                            <select name="smoking" required>
+                                <option value="">Select status</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Painkiller Usage</label>
+                            <select name="painkiller_usage" required>
+                                <option value="">Select status</option>
+                                <option value="yes">Yes (Regular)</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Family History of CKD</label>
+                            <select name="family_history" required>
+                                <option value="">Select status</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Stress Level</label>
+                            <select name="stress_level" required>
+                                <option value="">Select level</option>
+                                <option value="low">Low</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Duration of Symptoms <span class="unit">(months)</span></label>
+                            <input type="number" name="months" placeholder="e.g. 6" min="1" required>
+                            <span class="field-hint">How long symptoms have been present</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ==================== STEP 3 — DIET & HABITS ==================== -->
+                <div class="form-step" id="step-3">
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+                            <label>Dietary Pattern</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="diet" value="balanced">
+                                    <span class="radio-box">
+                                        <span class="radio-title">Balanced Diet</span>
+                                        <span class="radio-desc">Variety of foods, all nutrients</span>
+                                    </span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="diet" value="high protein">
+                                    <span class="radio-box">
+                                        <span class="radio-title">High Protein</span>
+                                        <span class="radio-desc">Meat, dairy, protein-heavy</span>
+                                    </span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="diet" value="low salt">
+                                    <span class="radio-box">
+                                        <span class="radio-title">Low Salt</span>
+                                        <span class="radio-desc">Restricted sodium intake</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Alcohol Consumption</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="alcohol" value="never">
+                                    <span class="radio-box">
+                                        <span class="radio-title">Never</span>
+                                        <span class="radio-desc">No alcohol consumption</span>
+                                    </span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="alcohol" value="occasionally">
+                                    <span class="radio-box">
+                                        <span class="radio-title">Occasionally</span>
+                                        <span class="radio-desc">Social or weekend drinking</span>
+                                    </span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="alcohol" value="daily">
+                                    <span class="radio-box">
+                                        <span class="radio-title">Daily</span>
+                                        <span class="radio-desc">Regular daily consumption</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Weight Changes (Recent)</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="weight_changes" value="stable">
+                                    <span class="radio-box">
+                                        <span class="radio-title">Stable</span>
+                                        <span class="radio-desc">No significant change</span>
+                                    </span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="weight_changes" value="loss">
+                                    <span class="radio-box">
+                                        <span class="radio-title">Weight Loss</span>
+                                        <span class="radio-desc">Noticeable weight decrease</span>
+                                    </span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="weight_changes" value="gain">
+                                    <span class="radio-box">
+                                        <span class="radio-title">Weight Gain</span>
+                                        <span class="radio-desc">Noticeable weight increase</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- BUTTONS -->
+                <div class="form-actions">
+                    <button type="button" class="btn-back" id="btn-back" onclick="prevStep()" style="display:none">
+                        Back
+                    </button>
+                    <button type="button" class="btn-next" id="btn-next" onclick="nextStep()">
+                        Next &rarr;
+                    </button>
+                    <button type="submit" class="btn-predict" id="btn-predict" style="display:none">
+                        <span id="btn-text">Predict Stage</span>
+                        <span id="btn-loader" style="display:none">Analyzing...</span>
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>

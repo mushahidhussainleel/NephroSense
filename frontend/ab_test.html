@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NephroSense — A/B Testing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ab_test.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-dot"></span>
+            NephroSense
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Predict</a>
+            <a href="ab_test.html" class="active">A/B Testing</a>
+            <a href="admin.html">Admin</a>
+            <a href="http://127.0.0.1:8000/docs" target="_blank">API Docs</a>
+        </div>
+    </nav>
+
+    <main class="ab-container">
+
+        <!-- HEADER -->
+        <div class="ab-header">
+            <div class="ab-badge">Model Comparison</div>
+            <h1>A/B <span class="accent">Testing</span></h1>
+            <p>Compare V2 Champion vs V3 Challenger on the same patient data. See which model performs better and whether both agree on the prediction.</p>
+        </div>
+
+        <!-- EXPLANATION -->
+        <div class="ab-explainer">
+            <div class="explainer-item">
+                <div class="explainer-icon">V2</div>
+                <div>
+                    <div class="explainer-title">Champion — XGBoost</div>
+                    <div class="explainer-desc">Currently in production. Accuracy: 98.62%</div>
+                </div>
+            </div>
+            <div class="explainer-vs">VS</div>
+            <div class="explainer-item">
+                <div class="explainer-icon challenger">V3</div>
+                <div>
+                    <div class="explainer-title">Challenger — XGBoost Tuned</div>
+                    <div class="explainer-desc">Staging model. Accuracy: 98.50%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM + RESULTS -->
+        <div class="ab-main">
+
+            <!-- INPUT FORM -->
+            <div class="ab-form-section">
+                <div class="section-title">Patient Data</div>
+
+                <form id="ab-form">
+                    <div class="ab-form-grid">
+
+                        <div class="form-group">
+                            <label>GFR <span class="unit">(mL/min/1.73m²)</span></label>
+                            <input type="number" name="gfr" placeholder="e.g. 75.6" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Serum Creatinine <span class="unit">(mg/dL)</span></label>
+                            <input type="number" name="serum_creatinine" placeholder="e.g. 0.9" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>BUN <span class="unit">(mg/dL)</span></label>
+                            <input type="number" name="bun" placeholder="e.g. 15" step="0.1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Serum Calcium <span class="unit">(mg/dL)</span></label>
+                            <input type="number" name="serum_calcium" placeholder="e.g. 9.5" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Blood Pressure <span class="unit">(mmHg)</span></label>
+                            <input type="number" name="blood_pressure" placeholder="e.g. 120" step="0.1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Urine pH</label>
+                            <input type="number" name="urine_ph" placeholder="e.g. 6.5" step="0.1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>C3/C4 Levels</label>
+                            <input type="number" name="c3_c4" placeholder="e.g. 110" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Oxalate Levels</label>
+                            <input type="number" name="oxalate_levels" placeholder="e.g. 2.3" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>ANA Test</label>
+                            <select name="ana" required>
+                                <option value="">Select</option>
+                                <option value="positive">Positive</option>
+                                <option value="negative">Negative</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Hematuria</label>
+                            <select name="hematuria" required>
+                                <option value="">Select</option>
+                                <option value="positive">Positive</option>
+                                <option value="negative">Negative</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Physical Activity</label>
+                            <select name="physical_activity" required>
+                                <option value="">Select</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="rarely">Rarely</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Water Intake <span class="unit">(L/day)</span></label>
+                            <input type="number" name="water_intake" placeholder="e.g. 2.5" step="0.1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Smoking</label>
+                            <select name="smoking" required>
+                                <option value="">Select</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Painkiller Usage</label>
+                            <select name="painkiller_usage" required>
+                                <option value="">Select</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Family History</label>
+                            <select name="family_history" required>
+                                <option value="">Select</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Stress Level</label>
+                            <select name="stress_level" required>
+                                <option value="">Select</option>
+                                <option value="low">Low</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Symptoms Duration <span class="unit">(months)</span></label>
+                            <input type="number" name="months" placeholder="e.g. 6" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Diet</label>
+                            <select name="diet" required>
+                                <option value="">Select</option>
+                                <option value="balanced">Balanced</option>
+                                <option value="high protein">High Protein</option>
+                                <option value="low salt">Low Salt</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Alcohol</label>
+                            <select name="alcohol" required>
+                                <option value="">Select</option>
+                                <option value="never">Never</option>
+                                <option value="occasionally">Occasionally</option>
+                                <option value="daily">Daily</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Weight Changes</label>
+                            <select name="weight_changes" required>
+                                <option value="">Select</option>
+                                <option value="stable">Stable</option>
+                                <option value="loss">Loss</option>
+                                <option value="gain">Gain</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn-ab-test" id="btn-ab">
+                        <span id="ab-btn-text">Run A/B Test</span>
+                        <span id="ab-btn-loader" style="display:none">Comparing Models...</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- RESULTS -->
+            <div class="ab-results-section" id="ab-results" style="display:none">
+
+                <!-- AGREEMENT STATUS -->
+                <div class="agreement-banner" id="agreement-banner">
+                    <div class="agreement-icon" id="agreement-icon"></div>
+                    <div class="agreement-text" id="agreement-text"></div>
+                </div>
+
+                <!-- COMPARISON CARDS -->
+                <div class="comparison-row">
+
+                    <!-- V2 -->
+                    <div class="model-result-card" id="v2-card">
+                        <div class="model-tag champion">Champion</div>
+                        <div class="model-version">V2 — XGBoost</div>
+                        <div class="model-stage" id="v2-stage">--</div>
+                        <div class="model-stage-label" id="v2-label">--</div>
+                        <div class="model-confidence">
+                            <span class="conf-label">Confidence</span>
+                            <span class="conf-value" id="v2-confidence">--</span>
+                        </div>
+                        <div class="conf-bar-wrap">
+                            <div class="conf-bar-fill champion-bar" id="v2-bar"></div>
+                        </div>
+                    </div>
+
+                    <!-- V3 -->
+                    <div class="model-result-card" id="v3-card">
+                        <div class="model-tag challenger">Challenger</div>
+                        <div class="model-version">V3 — XGBoost Tuned</div>
+                        <div class="model-stage" id="v3-stage">--</div>
+                        <div class="model-stage-label" id="v3-label">--</div>
+                        <div class="model-confidence">
+                            <span class="conf-label">Confidence</span>
+                            <span class="conf-value" id="v3-confidence">--</span>
+                        </div>
+                        <div class="conf-bar-wrap">
+                            <div class="conf-bar-fill challenger-bar" id="v3-bar"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- WINNER -->
+                <div class="winner-section" id="winner-section">
+                    <div class="winner-label">Higher Confidence</div>
+                    <div class="winner-value" id="winner-text">--</div>
+                </div>
+
+                <!-- RESET -->
+                <button class="btn-reset" onclick="resetTest()">Test Again</button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/ab_test.js"></script>
+</body>
+</html>

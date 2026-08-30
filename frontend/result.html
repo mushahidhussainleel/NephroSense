@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NephroSense — Prediction Result</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/result.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-dot"></span>
+            NephroSense
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Predict</a>
+            <a href="ab_test.html">A/B Testing</a>
+            <a href="admin.html">Admin</a>
+            <a href="http://127.0.0.1:8000/docs" target="_blank">API Docs</a>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="result-container">
+
+        <!-- TOP ROW -->
+        <div class="result-top">
+
+            <!-- STAGE CARD -->
+            <div class="stage-card" id="stage-card">
+                <div class="stage-badge" id="stage-badge">Analyzing...</div>
+                <div class="stage-number" id="stage-number">--</div>
+                <div class="stage-label" id="stage-label">Loading prediction...</div>
+                <div class="stage-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Confidence</span>
+                        <span class="meta-value" id="confidence-val">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Model</span>
+                        <span class="meta-value" id="model-val">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONFIDENCE BAR -->
+            <div class="confidence-card">
+                <div class="card-title">Prediction Confidence</div>
+                <div class="confidence-visual">
+                    <div class="confidence-bar-wrap">
+                        <div class="confidence-bar-fill" id="conf-bar"></div>
+                    </div>
+                    <span class="confidence-pct" id="conf-pct">0%</span>
+                </div>
+                <div class="stage-scale">
+                    <div class="scale-item" id="scale-0">Stage 0<br><small>Healthy</small></div>
+                    <div class="scale-item" id="scale-1">Stage 1<br><small>Mild</small></div>
+                    <div class="scale-item" id="scale-2">Stage 2<br><small>Mild-Mod</small></div>
+                    <div class="scale-item" id="scale-3">Stage 3<br><small>Moderate</small></div>
+                    <div class="scale-item" id="scale-4">Stage 4<br><small>Severe</small></div>
+                    <div class="scale-item" id="scale-5">Stage 5<br><small>Failure</small></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MIDDLE ROW -->
+        <div class="result-middle">
+
+            <!-- RECOMMENDATION -->
+            <div class="recommendation-card">
+                <div class="card-title">Clinical Recommendation</div>
+                <p class="recommendation-text" id="recommendation-text">Loading...</p>
+                <div class="disclaimer-strip">
+                    <span>AI Decision Support Only</span>
+                    <span id="disclaimer-text"></span>
+                </div>
+            </div>
+
+            <!-- TOP FEATURES TABLE -->
+            <div class="features-card">
+                <div class="card-title">Top Contributing Features</div>
+                <table class="features-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Patient Value</th>
+                            <th>SHAP Impact</th>
+                            <th>Direction</th>
+                        </tr>
+                    </thead>
+                    <tbody id="features-tbody">
+                        <tr><td colspan="4" style="text-align:center; color: var(--text-muted)">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- WATERFALL ROW -->
+        <div class="waterfall-section">
+            <div class="card-title">SHAP Waterfall — Feature Impact Breakdown</div>
+            <div class="waterfall-subtitle">Each bar shows how much each feature pushed the prediction toward or away from this stage</div>
+            <div class="waterfall-chart" id="waterfall-chart"></div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="result-actions">
+            <a href="index.html" class="btn-new">New Prediction</a>
+            <button onclick="window.print()" class="btn-print">Print Report</button>
+        </div>
+
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/result.js"></script>
+</body>
+</html>

@@ -53,7 +53,7 @@ nephrologists and healthcare professionals in early detection and staging of
 ### Developer
 **Mushahid Hussain**
 
-- GitHub: [mushahidhussainleel](https://github.com/mushahidhussainleel)
+- GitHub: [mushahidhussainleel](https://github.com/mushahidhussainleel/NephroSense)
 - Email: [mushahidh442007@gmail.com](mailto:mushahidh442007@gmail.com)
     """,
     version="1.0.0",

@@ -2,7 +2,7 @@
 // NEPHROSENSE — API Calls
 // =============================================
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://nephrosense-production.up.railway.app";
 
 async function callPredictAPI(data) {
     const response = await fetch(`${API_BASE}/predict/explain`, {

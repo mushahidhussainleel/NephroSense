@@ -140,7 +140,7 @@ function collectData() {
 // API CALL
 // =============================================
 async function callABTestAPI(data) {
-    const response = await fetch("http://127.0.0.1:8000/ab-test", {
+    const response = await fetch("https://nephrosense-production.up.railway.app/ab-test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)

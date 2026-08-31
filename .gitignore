@@ -17,12 +17,6 @@ backend/data/processed/
 data/
 
 # ==========================================
-# ML MODELS — Ignore large model files
-# ==========================================
-backend/models/*.pkl
-backend/models/encoders/*.pkl
-
-# ==========================================
 # MLFLOW — Ignore local tracking files
 # ==========================================
 backend/notebooks/mlruns/

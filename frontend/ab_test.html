@@ -6,6 +6,47 @@
     <title>NephroSense — A/B Testing</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/ab_test.css">
+    <style>
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px 40px;
+            margin-bottom: 8px;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 0 32px;
+        }
+        .stat-num {
+            font-size: 32px;
+            font-weight: 800;
+            font-family: var(--font-mono);
+            color: var(--accent-blue);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+        }
+        .stat-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+        }
+        .champion-color { color: var(--accent-blue) !important; }
+        .challenger-color { color: var(--accent-purple) !important; }
+        .agree-color { color: var(--accent-green) !important; }
+        .disagree-color { color: var(--accent-red) !important; }
+    </style>
 </head>
 <body>
 
@@ -48,6 +89,49 @@
                     <div class="explainer-title">Challenger — XGBoost Tuned</div>
                     <div class="explainer-desc">Staging model. Accuracy: 98.50%</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- LIVE STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num" id="total-tests">0</div>
+                <div class="stat-label">Total Tests</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num champion-color" id="v2-wins">0</div>
+                <div class="stat-label">V2 Wins</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num challenger-color" id="v3-wins">0</div>
+                <div class="stat-label">V3 Wins</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num" id="stat-ties">0</div>
+                <div class="stat-label">Ties</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num agree-color" id="stat-agreements">0</div>
+                <div class="stat-label">Agreements</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num disagree-color" id="stat-disagreements">0</div>
+                <div class="stat-label">Disagreements</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num champion-color" id="v2-avg-conf">--</div>
+                <div class="stat-label">V2 Avg Conf</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num challenger-color" id="v3-avg-conf">--</div>
+                <div class="stat-label">V3 Avg Conf</div>
             </div>
         </div>
 
@@ -218,16 +302,12 @@
             <!-- RESULTS -->
             <div class="ab-results-section" id="ab-results" style="display:none">
 
-                <!-- AGREEMENT STATUS -->
                 <div class="agreement-banner" id="agreement-banner">
                     <div class="agreement-icon" id="agreement-icon"></div>
                     <div class="agreement-text" id="agreement-text"></div>
                 </div>
 
-                <!-- COMPARISON CARDS -->
                 <div class="comparison-row">
-
-                    <!-- V2 -->
                     <div class="model-result-card" id="v2-card">
                         <div class="model-tag champion">Champion</div>
                         <div class="model-version">V2 — XGBoost</div>
@@ -242,7 +322,6 @@
                         </div>
                     </div>
 
-                    <!-- V3 -->
                     <div class="model-result-card" id="v3-card">
                         <div class="model-tag challenger">Challenger</div>
                         <div class="model-version">V3 — XGBoost Tuned</div>
@@ -256,16 +335,13 @@
                             <div class="conf-bar-fill challenger-bar" id="v3-bar"></div>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- WINNER -->
                 <div class="winner-section" id="winner-section">
                     <div class="winner-label">Higher Confidence</div>
                     <div class="winner-value" id="winner-text">--</div>
                 </div>
 
-                <!-- RESET -->
                 <button class="btn-reset" onclick="resetTest()">Test Again</button>
 
             </div>

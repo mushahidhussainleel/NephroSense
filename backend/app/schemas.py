@@ -67,7 +67,22 @@ class PredictionOutput(BaseModel):
         description="Model prediction confidence (0-1)")
     shap_top_features: List[Dict] = Field(...,
         description="Top 5 features that influenced prediction")
-
+    shap_all_features: List[Dict] = Field(
+        ...,
+        description="All 26 features for SHAP waterfall chart"
+    )
+    llm_explanation: str = Field(
+        ...,
+        description="LLM-generated explanation of prediction"
+    )
+    llm_source: str = Field(
+        ...,
+        description="Source: gemini-2.5-flash or predefined_recommendation"
+    )
+    disclaimer: str = Field(
+        ...,
+        description="Medical disclaimer"
+    )
 
 
 # STAGE LABELS — Meaningful output
@@ -88,6 +103,39 @@ STAGE_RECOMMENDATIONS = {
     3: "Moderate kidney damage. Immediate medical consultation recommended. Dietary restrictions may apply.",
     4: "Severe kidney damage. Urgent specialist consultation required. Dialysis preparation may be needed.",
     5: "Kidney failure detected. Immediate medical intervention required. Contact your doctor immediately."
+}
+
+STAGE_CONTEXT = {
+    0: {
+        "summary": "Kidneys are healthy with no signs of CKD.",
+        "urgency": "No immediate action needed.",
+        "advice": "Maintain a healthy lifestyle and get annual checkups."
+    },
+    1: {
+        "summary": "Mild kidney damage but filtering is still normal.",
+        "urgency": "Low urgency — monitor regularly.",
+        "advice": "Stay hydrated, reduce salt intake, monitor blood pressure."
+    },
+    2: {
+        "summary": "Slight reduction in kidney function detected.",
+        "urgency": "Moderate — consult a doctor soon.",
+        "advice": "Reduce protein and sodium intake. Avoid NSAIDs."
+    },
+    3: {
+        "summary": "Noticeable reduction in kidney function (GFR 30–59).",
+        "urgency": "Important — schedule nephrologist appointment soon.",
+        "advice": "Strict dietary control, blood pressure management, regular labs."
+    },
+    4: {
+        "summary": "Severe kidney damage, dialysis preparation may begin (GFR 15–29).",
+        "urgency": "HIGH PRIORITY — see nephrologist urgently within days.",
+        "advice": "Dialysis planning, strict fluid and potassium restrictions."
+    },
+    5: {
+        "summary": "End-stage renal disease, kidneys nearly stopped (GFR < 15).",
+        "urgency": "CRITICAL EMERGENCY — immediate intervention required.",
+        "advice": "Emergency nephrology care. Dialysis or transplant needed now."
+    }
 }
 
 DISCLAIMER = (

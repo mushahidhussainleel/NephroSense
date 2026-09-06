@@ -53,8 +53,8 @@ function renderResult(result) {
         if (i === stage) el.classList.add("active");
     }
 
-    // Recommendation
-    document.getElementById("recommendation-text").textContent = result.recommendation;
+    // LLM Explanation
+    renderLLMExplanation(result.llm_explanation, result.llm_source);
     document.getElementById("disclaimer-text").textContent = result.disclaimer;
 
     // Features table
@@ -62,6 +62,28 @@ function renderResult(result) {
 
     // Waterfall chart
     renderWaterfall(result.shap_all_features);
+}
+
+// =============================================
+// LLM EXPLANATION
+// =============================================
+function renderLLMExplanation(text, source) {
+    const badge = document.getElementById("llm-badge");
+    const label = document.getElementById("llm-source-label");
+    const textEl = document.getElementById("llm-text");
+
+    const isGemini = source === "gemini-2.5-flash";
+    badge.className = `llm-badge ${isGemini ? "source-gemini" : "source-fallback"}`;
+    label.textContent = isGemini ? "Gemini 2.5 Flash" : "Predefined Response";
+
+    textEl.innerHTML = formatLLMText(text);
+}
+
+function formatLLMText(text) {
+    if (!text) return "No explanation available.";
+    return text
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\*(.*?)\*/g, "<em>$1</em>");
 }
 
 // =============================================

@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import APIKeyHeader
+from datetime import datetime
 import os
 from dotenv import load_dotenv, find_dotenv
 from app.schemas import (
@@ -92,7 +93,9 @@ async def switch_version(
         return {
             "message": f"Switched from {previous} to {request.version}",
             "previous_version": previous,
-            "new_version": request.version
+            "new_version": request.version,
+            "reason": "Manual switch by admin",
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

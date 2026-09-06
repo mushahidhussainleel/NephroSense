@@ -70,10 +70,16 @@
         <!-- MIDDLE ROW -->
         <div class="result-middle">
 
-            <!-- RECOMMENDATION -->
-            <div class="recommendation-card">
-                <div class="card-title">Clinical Recommendation</div>
-                <p class="recommendation-text" id="recommendation-text">Loading...</p>
+            <!-- LLM EXPLANATION -->
+            <div class="llm-card" id="llm-card">
+                <div class="card-title-row">
+                    <div class="card-title">AI Analysis</div>
+                    <div class="llm-badge" id="llm-badge">
+                        <span class="badge-dot"></span>
+                        <span id="llm-source-label">Loading...</span>
+                    </div>
+                </div>
+                <div class="llm-text" id="llm-text">Loading...</div>
                 <div class="disclaimer-strip">
                     <span>AI Decision Support Only</span>
                     <span id="disclaimer-text"></span>
@@ -93,7 +99,10 @@
                         </tr>
                     </thead>
                     <tbody id="features-tbody">
-                        <tr><td colspan="4" style="text-align:center; color: var(--text-muted)">Loading...</td></tr>
+                        <tr>
+                            <td colspan="4" style="text-align:center;
+                            color: var(--text-muted)">Loading...</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

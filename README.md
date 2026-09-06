@@ -82,36 +82,78 @@ NephroSense is a production-level AI system designed to assist nephrologists and
 ```
 NephroSense/
 │
+├── .env
+├── .gitignore
+├── README.md
+│
 ├── backend/
 │   ├── app/
+│   │   ├── __init__.py
 │   │   ├── main.py
-│   │   ├── schemas.py
 │   │   ├── model_loader.py
+│   │   ├── schemas.py
 │   │   ├── templates/
+│   │   │   └── home.html
 │   │   └── routes/
+│   │       ├── __init__.py
 │   │       ├── predict.py
+│   │       ├── llm_explain.py
 │   │       ├── versions.py
 │   │       ├── monitoring.py
 │   │       └── ab_testing.py
+│   │
 │   ├── models/
+│   │   ├── encoders/
+│   │   │   ├── smoking_encoder.pkl
+│   │   │   ├── painkiller_usage_encoder.pkl
+│   │   │   └── family_history_encoder.pkl
+│   │   ├── v2_xgboost.pkl
+│   │   ├── v3_xgboost_tuned.pkl
+│   │   ├── shap_explainer_v2.pkl
+│   │   ├── shap_explainer_v3.pkl
+│   │   └── feature_columns.pkl
+│   │
+│   ├── data/
+│   │   ├── raw/
+│   │   │   └── updated_ckd_dataset_with_stages.csv
+│   │   └── processed/
+│   │       └── processed_ckd.csv
+│   │
 │   ├── assets/
+│   │   ├── shap_summary_v2.png
+│   │   ├── shap_summary_v3.png
+│   │   ├── shap_waterfall_v2.png
+│   │   ├── shap_waterfall_v3.png
+│   │   ├── confusion_matrix_V2_XGBoost.png
+│   │   ├── confusion_matrix_V3_XGBoost_Tuned.png
+│   │   └── correlation_heatmap.png
+│   │
 │   ├── notebooks/
+│   │   ├── 01_eda_and_preprocessing.ipynb
+│   │   ├── 02_model_training.ipynb
+│   │   ├── mlruns/
+│   │   └── mlflow.db
+│   │
 │   ├── Dockerfile
 │   └── requirements.txt
 │
-├── frontend/
-│   ├── index.html
-│   ├── result.html
-│   ├── ab_test.html
-│   ├── admin.html
-│   ├── css/
-│   ├── js/
-│   ├── Dockerfile
-│   └── nginx.conf
-│
-├── docker-compose.yml
-├── .env
-└── README.md
+└── frontend/
+    ├── index.html
+    ├── result.html
+    ├── ab_test.html
+    ├── admin.html
+    ├── css/
+    │   ├── style.css
+    │   ├── form.css
+    │   ├── result.css
+    │   ├── ab_test.css
+    │   └── admin.css
+    └── js/
+        ├── api.js
+        ├── form.js
+        ├── result.js
+        ├── ab_test.js
+        └── admin.js
 ```
 
 ---

@@ -253,6 +253,87 @@
 .direction-down { color: var(--accent-green); }
 
 /* =============================================
+   LLM EXPLANATION CARD
+   ============================================= */
+
+.llm-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.card-title-row .card-title {
+    margin-bottom: 0;
+}
+
+.llm-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+.llm-badge.source-gemini {
+    background: rgba(99, 179, 237, 0.08);
+    border: 1px solid rgba(99, 179, 237, 0.2);
+    color: var(--accent-blue);
+}
+
+.llm-badge.source-fallback {
+    background: rgba(246, 224, 94, 0.06);
+    border: 1px solid rgba(246, 224, 94, 0.15);
+    color: var(--accent-yellow);
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.source-gemini .badge-dot {
+    background: var(--accent-blue);
+    box-shadow: 0 0 6px var(--accent-blue);
+    animation: pulse-blue 2s infinite;
+}
+
+.source-fallback .badge-dot {
+    background: var(--accent-yellow);
+}
+
+@keyframes pulse-blue {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.llm-text {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.9;
+    flex: 1;
+}
+
+.llm-text strong {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+/* =============================================
    WATERFALL
    ============================================= */
 .waterfall-section {

@@ -3,8 +3,8 @@
 > A production-level Machine Learning system for early detection and staging of **Chronic Kidney Disease (CKD)** — built with SHAP explainability, Model Governance, A/B Testing, LLM-powered AI Analysis, and Auto Rollback with email alerting.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://nephro-sense-nine.vercel.app)
-[![Backend API](https://img.shields.io/badge/Backend%20API-Railway-purple?style=for-the-badge&logo=railway)](https://nephrosense-production.up.railway.app)
-[![API Docs](https://img.shields.io/badge/API%20Docs-Swagger-green?style=for-the-badge&logo=swagger)](https://nephrosense-production.up.railway.app/docs)
+[![Backend API](https://img.shields.io/badge/Backend%20API-SnapDeploy-purple?style=for-the-badge&logo=docker)](https://nephrosense-cd36f.containers.snapdeploy.app)
+[![API Docs](https://img.shields.io/badge/API%20Docs-Swagger-green?style=for-the-badge&logo=swagger)](https://nephrosense-cd36f.containers.snapdeploy.app/docs)
 [![GitHub](https://img.shields.io/badge/GitHub-mushahidhussainleel-black?style=for-the-badge&logo=github)](https://github.com/mushahidhussainleel/NephroSense)
 
 ---
@@ -23,13 +23,22 @@ This system was built as a **junior ML engineering portfolio project** demonstra
 
 ---
 
+## 🎬 Demo Video
+
+[![NephroSense Demo](https://img.shields.io/badge/Watch%20Demo-YouTube-red?style=for-the-badge&logo=youtube)](https://youtu.be/B628CGnyHGM?si=jxw4CfTK2jPmbDwm)
+
+> Click above to watch the full system walkthrough — live prediction, SHAP explainability, A/B Testing, Admin Panel, and Auto Rollback in action.
+
+---
+
 ## 🔗 Live Links
 
 | Service | URL |
 |---------|-----|
 | 🌐 Frontend App | https://nephro-sense-nine.vercel.app |
-| ⚙️ Backend API | https://nephrosense-production.up.railway.app |
-| 📄 API Docs (Swagger) | https://nephrosense-production.up.railway.app/docs |
+| ⚙️ Backend API | https://nephrosense-cd36f.containers.snapdeploy.app |
+| 📄 API Docs (Swagger) | https://nephrosense-cd36f.containers.snapdeploy.app/docs |
+| 🎬 Demo Video | https://youtu.be/B628CGnyHGM?si=jxw4CfTK2jPmbDwm |
 | 💻 GitHub Repository | https://github.com/mushahidhussainleel/NephroSense |
 
 ---
@@ -154,7 +163,7 @@ If the LLM API is unavailable, a **predefined fallback recommendation** is shown
 | Backend | FastAPI, Pydantic v2, Uvicorn |
 | Frontend | HTML5, CSS3, Vanilla JavaScript |
 | Containerization | Docker, Docker Compose |
-| Backend Deployment | Railway |
+| Backend Deployment | SnapDeploy |
 | Frontend Deployment | Vercel |
 | Email Alerts | Gmail SMTP |
 

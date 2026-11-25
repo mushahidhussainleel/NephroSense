@@ -2,7 +2,7 @@
 // NEPHROSENSE — API Calls
 // =============================================
 
-const API_BASE = "https://nephrosense-production.up.railway.app";
+const API_BASE = "https://nephrosense-cd36f.containers.snapdeploy.app";
 
 async function callPredictAPI(data) {
     const response = await fetch(`${API_BASE}/predict/explain`, {
